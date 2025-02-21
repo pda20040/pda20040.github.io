@@ -6,7 +6,7 @@
          </script>
   </head>
   <body>
-    <a-scene id="s1 background="color: cadetblue" physics>
+    <a-scene id="s1" background="color: cadetblue" physics>
       <a-plane static-body height="100" width="100" rotation="-90 0 0"></a-plane>
     </a-entity camera look-controls wasd-controls position="0 1.6 0">
       <a-sphere static-body position="0 -1 -1" scale="0.5 0.5 0.5" color="gray"></a-sphere>
@@ -20,7 +20,7 @@
           var box = document.createElement('a-box');
           box.setAttribute('dynamic-body', '');
           box.setAttribute('position', (2 * i + 1) + ' ' + (j + 0.5) + ' -10');
-          box.setAttribute('color', 'fireback');
+          box.setAttribute('color', 'firebrick');
           box.setAttribute('scale', '2 1 1');
           scene1.appendChild(box);
         }
