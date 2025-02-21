@@ -9,7 +9,7 @@
         init: function () {
           var el = this.el;
           el.addEventListener('mouseenter', function () { el.setAttribute('color', 'red'); });
-          el.addEventListener('mouseleave', function () { el.setAttribute('color', firebrick'); });
+          el.addEventListener('mouseleave', function () { el.setAttribute('color', 'firebrick'); });
           el.addEventListener('click', function () { el.remove(); });
         }
       });
@@ -27,9 +27,9 @@
           var box = document.createElement('a-box');
           box.setAttribute('dynamic-body', '');
           box.setAttribute('removing', '');
-          box.setAttribute('position', (2 * i + 1) + ' ' + (j + 0.5) + ' -10');
+          box.setAttribute('position', e * (j - 2) + ' ' + (i + 0.5) + ' ' + (-12 - (j - 2) * o));
           box.setAttribute('color', 'firebrick');
-          box.setAttribute('scale', '2 1 1');
+          box.setAttribute('scale', (4 * o + 1) + ' 1 ' + (4 * e + 1));
           scene1.appendChild(box);
         }
       }
