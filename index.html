@@ -29,15 +29,14 @@
     <div align="center">
     <!-- Έχουμε 3 ποτήρια μπροστά μας, και μία κόκκινη μπάλα, με τα οποία θα παίξουμε το παιχνίδι -->
     <a-scene cursor="rayOrigin: mouse" background="color:cadetblue" ondblclick="this.requestFullscreen();" embedded>
-        <a-entity id="redball" fbx-model="src:url(redball.fbx)" position="300 -150 -300"
-                  id="RedCup" fbx-model="src:url(RedCup.fbx)" position="300 -150 -300"
+        <a-entity id="RedCup" fbx-model="src:url(RedCup.fbx)" position="300 -150 -300"
             animation-mixer="loop: once; clampWhenFinished: true; timeScale: 0" testing></a-entity> 
     </a-scene>
     </div>
     <script>
     // ΕΔΩ ΔΗΜΙΟΥΡΓΩ ΠΟΛΛΑΠΛΑ ΑΝΤΙΓΡΑΦΑ ΜΙΑΣ ΟΝΤΟΤΗΤΑΣ
         for (var i = -300; i < 300; i += 300) {
-            var p = document.getElementById('prisoner').cloneNode(true);
+            var p = document.getElementById('RedCup').cloneNode(true);
             p.setAttribute('position', i + ' -150 -300');
             document.querySelector('a-scene').appendChild(p);
         }
