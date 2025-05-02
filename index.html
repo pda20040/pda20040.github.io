@@ -1,11 +1,11 @@
 <html>
 
 <head>
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
     <script>
     // ΕΔΩ ΤΟΠΟΘΕΤΩ ΤΑ ΣΥΣΤΑΤΙΚΑ (COMPONENTS) ΠΟΥ ΕΧΩ ΔΗΜΙΟΥΡΓΗΣΕΙ
-	var time = 50000, guess = false;
+	var time = 0, guess = false;
 
         AFRAME.registerComponent('testing', {
             init: function () {
@@ -46,7 +46,7 @@
     <hr />
     <div align="center">
     <!-- Έχουμε 3 ποτήρια μπροστά μας, και μία κόκκινη μπάλα, με τα οποία θα παίξουμε το παιχνίδι -->
-    <a-scene cursor="rayOrigin: mouse" background="color:cadetblue" ondblclick="this.requestFullscreen();" embedded>
+    <a-scene cursor="rayOrigin: mouse" background="color:cadetblue" ondblclick="this.requestFullscreen();">
         <a-entity id="table" gltf-model="url(table.glb)" position="0 -1 -2" scale="2.000 2.000 2.000"></a-entity>  
         <a-sphere id="ball" position="0 0.96 -1.35" scale="0.10 0.10 0.10" color="red"></a-sphere>
         <a-entity id="cup" gltf-model="url(cup.glb)" position="0 1.15 -1.33" rotation="0 0 -178.2" scale="3.12 2.84 2.48" testing></a-entity>
