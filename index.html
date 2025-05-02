@@ -10,7 +10,7 @@
         AFRAME.registerComponent('testing', {
             init: function () {
                 this.el.addEventListener('click', function () {
-		    document.getElementById('cup').setAttribute('animation', 'property: position.y; to: 1.04');
+		    document.getElementById('cup').setAttribute('position.y', '1.04');
 		    document.getElementById('cup2').setAttribute('animation', 'property: position.y; to: 1.04');
 		    document.getElementById('cup3').setAttribute('animation', 'property: position.y; to: 1.04');
 		    setTimeout(function () { time = 5000; guess = false; }, 3000);
