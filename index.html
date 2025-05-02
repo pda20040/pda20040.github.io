@@ -5,12 +5,12 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
     <script>
     // ΕΔΩ ΤΟΠΟΘΕΤΩ ΤΑ ΣΥΣΤΑΤΙΚΑ (COMPONENTS) ΠΟΥ ΕΧΩ ΔΗΜΙΟΥΡΓΗΣΕΙ
-	var time = 0, guess = false;
+	var time = 50000, guess = false;
 
         AFRAME.registerComponent('testing', {
             init: function () {
                 this.el.addEventListener('click', function () {
-		    document.getElementById('cup').setAttribute('position.y', '1.04');
+		    document.getElementById('cup').setAttribute('animation', 'property: position.y; to: 1.04');
 		    document.getElementById('cup2').setAttribute('animation', 'property: position.y; to: 1.04');
 		    document.getElementById('cup3').setAttribute('animation', 'property: position.y; to: 1.04');
 		    setTimeout(function () { time = 5000; guess = false; }, 3000);
