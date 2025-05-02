@@ -1,15 +1,33 @@
-﻿<html>
+<html>
 
 <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
     <script>
     // ΕΔΩ ΤΟΠΟΘΕΤΩ ΤΑ ΣΥΣΤΑΤΙΚΑ (COMPONENTS) ΠΟΥ ΕΧΩ ΔΗΜΙΟΥΡΓΗΣΕΙ
+	var time = 0, guess = false;
+
         AFRAME.registerComponent('testing', {
             init: function () {
-                this.el.addEventListener('click', e => {
-                
+                this.el.addEventListener('click', function () {
+		    document.getElementById('cup').setAttribute('animation', 'property: position.y; to: 1.04');
+		    document.getElementById('cup2').setAttribute('animation', 'property: position.y; to: 1.04');
+		    document.getElementById('cup3').setAttribute('animation', 'property: position.y; to: 1.04');
+		    setTimeout(function () { time = 5000; guess = false; }, 3000);
                 });
+            },
+            tick: function () {
+                var el = this.el;
+		if (guess) {
+		    el.setAttribute('animation', 'property: position.y; to: 1.15');
+		    return;
+		}
+                time--;
+                if (time < 0) { guess = true; return; }
+                var x = Math.random() - 0.5;
+                var z = Math.random() - 0.5;
+                el.setAttribute('animation', 'property: position; to: ' + x + ' 1.04 ' + z);
+		if (el.id == "cup") document.getElementById('ball').setAttribute('animation', 'property: position; to: ' + x + ' 0.96 ' + z);
             }
         });
     </script>
@@ -29,22 +47,13 @@
     <div align="center">
     <!-- Έχουμε 3 ποτήρια μπροστά μας, και μία κόκκινη μπάλα, με τα οποία θα παίξουμε το παιχνίδι -->
     <a-scene cursor="rayOrigin: mouse" background="color:cadetblue" ondblclick="this.requestFullscreen();" embedded>
-        <a-entity id="table" gltf-model="url(table.glb)" position="0 -1 -2" scale="2.000 2.000 2.000">  </a-entity>  
-        <a-sphere position="0 0.96 -1.35" scale="0.10 0.10 0.10 " color="red"></a-sphere>
-             <a-entity id="cup" gltf-model="url(cup.glb)" position="-0 1.04 -1.33" rotation=" 0 0 -178.2" scale="3.80 2.96 3.54"> </a-entity>
-                 <a-entity id="cup" gltf-model="url(cup.glb)" position="-0.7 1.04 -1.33" rotation=" 0 0 -178.2" scale="3.80 2.96 3.54" > </a-entity>
-                         <a-entity id="cup" gltf-model="url(cup.glb)" position="0.7 1.04 -1.33" rotation=" 0 0 -178.2" scale="3.80 2.96 3.54" > </a-entity>
-
+        <a-entity id="table" gltf-model="url(table.glb)" position="0 -1 -2" scale="2.000 2.000 2.000"></a-entity>  
+        <a-sphere id="ball" position="0 0.96 -1.35" scale="0.10 0.10 0.10" color="red"></a-sphere>
+        <a-entity id="cup" gltf-model="url(cup.glb)" position="0 1.15 -1.33" rotation="0 0 -178.2" scale="3.12 2.84 2.48" testing></a-entity>
+        <a-entity id="cup2" gltf-model="url(cup.glb)" position="-0.7 1.15 -1.33" rotation="0 0 -178.2" scale="3.12 2.84 2.48" testing></a-entity>
+        <a-entity id="cup3" gltf-model="url(cup.glb)" position="0.7 1.15 -1.33" rotation="0 0 -178.2" scale="3.12 2.84 2.48" testing></a-entity>
     </a-scene>
     </div>
-    <script>
-    // ΕΔΩ ΔΗΜΙΟΥΡΓΩ ΠΟΛΛΑΠΛΑ ΑΝΤΙΓΡΑΦΑ ΜΙΑΣ ΟΝΤΟΤΗΤΑΣ
-        /*for (var i = -300; i < 300; i += 300) {
-          var p = document.getElementById('').cloneNode(true);
-            p.setAttribute('position', i + ' -150 -300');
-            document.querySelector('a-scene').appendChild(p);
-        }*/
-    </script>
     <hr />
     <p><strong>Πρόσεξε κάτω από πιο ποτήρι κρύβεται η μπάλα. Αφού ανακατευτούν, κάνε κλίκ και διάλεξε το ποτήρι κάτω από το οποίο πιτεύεις πως βρίσκεται το μπαλάκι. Αν διαλέξεις λάθος, έχασες!:<strong>...</p>
     <hr />
