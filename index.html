@@ -23,7 +23,7 @@
 		    return;
 		}
                 time--;
-                if (time == 0) { guess = true; return; }
+                if (time <= 0) { guess = true; return; }
                 var x = Math.random() - 0.5;
                 var z = Math.random() - 0.5 -1.33;
                 el.setAttribute('animation', 'property: position; to: ' + x + ' 1.04 ' + z);
